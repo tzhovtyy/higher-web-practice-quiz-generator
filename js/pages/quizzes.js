@@ -1,3 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-  alert('Привет, это страница со списком квизов!');
+import { initHeader } from "../components/header";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initHeader();
 });

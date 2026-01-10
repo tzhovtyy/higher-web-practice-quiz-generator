@@ -1,3 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-  alert('Привет, это главная страница!');
+import { initHeader } from "../components/header";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initHeader();
 });
