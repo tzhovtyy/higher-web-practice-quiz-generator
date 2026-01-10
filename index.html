@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/base/base.css" />
     <link rel="stylesheet" href="/css/components/header.css" />
     <link rel="stylesheet" href="/css/components/button.css" />
+    <link rel="stylesheet" href="/css/components/jsonForm.css" />
     <link rel="stylesheet" href="./css/pages/index.css" />
   </head>
   <body>
@@ -19,7 +20,7 @@
           <img src="/assets/logo.svg" class="header__logo" alt="Quiz App" />
         </a>
 
-        <a href="#" class="header__action-btn button"></a>
+        <a href="#" class="header__action button"></a>
 
         <button
           class="header__burger"
@@ -31,13 +32,29 @@
           <img src="/assets/cross.svg" class="header__burger-cross" alt="" />
         </button>
 
-        <!-- Mobile menu -->
-        <nav class="header__nav header__nav--mobile" aria-hidden="true">
+        <nav class="header__nav" aria-hidden="true">
           <template id="header-nav-link-template">
-            <a class="header__nav-link" href="#">Ссылка</a>
+            <a class="header__nav-link" href="#"></a>
           </template>
         </nav>
       </header>
+
+      <main class="quiz-generator">
+        <h1 class="quiz-generator__title text-h1">Генератор квизов</h1>
+        <p class="quiz-generator__subtitle text-body">Вставьте JSON…</p>
+        <form class="json-form">
+          <label for="json-textarea" class="json-form__label text-caption"
+            >Ваш JSON</label
+          >
+          <textarea
+            id="json-textarea"
+            class="json-form__textarea text-mono"
+          ></textarea>
+          <button class="json-form__submit button button--primary">
+            Сгенерировать
+          </button>
+        </form>
+      </main>
     </div>
   </body>
 </html>
