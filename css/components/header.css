@@ -13,7 +13,7 @@
   width: 25px;
 }
 
-.header__nav--mobile {
+.header__nav {
   position: fixed;
   inset: 64px 0 0 0;
   display: none;
@@ -41,15 +41,15 @@
   display: none;
 }
 
-.header__burger.active .header__burger-icon {
+.header__burger--active .header__burger-icon {
   display: none;
 }
 
-.header__burger.active .header__burger-cross {
+.header__burger--active .header__burger-cross {
   display: block;
 }
 
-.header__nav--mobile.active {
+.header__nav.active {
   display: flex;
 }
 
@@ -60,7 +60,7 @@
   .header__link-btn {
     display: none;
   }
-  .header__action-btn {
+  .header__action {
     display: none;
   }
   .header {

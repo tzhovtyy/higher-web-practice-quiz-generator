@@ -8,30 +8,30 @@
   border-radius: var(--radius-xs);
 }
 
-.button_primary {
+.button--primary {
   color: var(--color-surface);
   background: var(--color-primary);
   border-color: var(--color-primary);
 }
 
-.button_primary:hover {
+.button--primary:hover {
   opacity: 0.8;
 }
 
-.button_secondary {
+.button--secondary {
   border-color: var(--color-primary);
   background: var(--color-surface);
   color: var(--color-primary);
 }
 
-.button_secondary:hover {
+.button--secondary:hover {
   background-color: rgb(from var(--color-primary) r g b / 10%);
 }
 
-.button_ghost {
+.button--ghost {
   color: var(--color-primary);
 }
 
-.button_ghost:hover {
+.button--ghost:hover {
   opacity: 0.8;
 }

@@ -41,6 +41,12 @@ textarea,
 select {
   font: inherit;
   color: inherit;
+  outline: none;
+  box-shadow: none;
+}
+
+textarea {
+  resize: none;
 }
 
 button {
@@ -117,14 +123,27 @@ body {
 /* Layout */
 .page-wrapper {
   width: 100%;
-  max-width: var(--max-content-width-desktop);
+  max-width: var(--max-width-desktop);
   margin: 0 auto;
   padding: 0 16px;
-  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
   .page-wrapper {
-    max-width: var(--max-content-width-tablet);
+    max-width: var(--max-width-tablet);
+  }
+}
+
+@media (max-width: 400px) {
+  .text-h1 {
+    font-size: var(--text-h2);
+    line-height: var(--lh-h2);
+    font-weight: var(--fw-semibold);
+  }
+
+  .text-h2 {
+    font-size: var(--text-h3);
+    line-height: var(--lh-h3);
+    font-weight: var(--fw-semibold);
   }
 }

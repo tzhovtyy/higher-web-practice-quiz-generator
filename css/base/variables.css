@@ -49,8 +49,9 @@
   --shadow-e3: 0 8px 24px rgba(0, 0, 0, 0.14);
 
   /* Layout */
-  --max-content-width-desktop: 1140px;
-  --max-content-width-tablet: 704px;
+  --max-width-desktop: 1140px;
+  --max-content-width-desktop: 752px;
+  --max-width-tablet: 704px;
 
   --breakpoint-tablet: 768px;
   --breakpoint-mobile: 400px;

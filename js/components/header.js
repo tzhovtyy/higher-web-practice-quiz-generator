@@ -2,12 +2,12 @@ const PAGE_ACTIONS = {
   default: {
     text: "Посмотреть сохранённые квизы",
     href: "/quizzes.html",
-    class: "button_secondary",
+    class: "button--secondary",
   },
   quizzes: {
     text: "Добавить квиз",
     href: "/index.html",
-    class: "button_primary",
+    class: "button--primary",
   },
 };
 
@@ -17,9 +17,9 @@ function getCurrentPageKey() {
 }
 
 export function initHeader() {
-  const actionBtn = document.querySelector(".header__action-btn");
+  const actionBtn = document.querySelector(".header__action");
   const burgerBtn = document.querySelector(".header__burger");
-  const mobileNav = document.querySelector(".header__nav--mobile");
+  const mobileNav = document.querySelector(".header__nav");
   const mobileLinkTemplate = document.querySelector(
     "#header-nav-link-template"
   );
@@ -33,7 +33,7 @@ export function initHeader() {
     actionBtn.textContent = action.text;
     actionBtn.href = action.href;
     actionBtn.classList.forEach((cls) => {
-      if (cls.startsWith("button_")) actionBtn.classList.remove(cls);
+      if (cls.startsWith("button--")) actionBtn.classList.remove(cls);
     });
     if (action.class) actionBtn.classList.add(action.class);
   }
