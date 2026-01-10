@@ -2,22 +2,22 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
-  root: ".",
+  base: "./",
+  server: {
+    port: 5173,
+    open: true,
+  },
   build: {
+    outDir: "dist",
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "index.html"),
+        index: resolve(__dirname, "index.html"),
         quizzes: resolve(__dirname, "quizzes.html"),
         quiz: resolve(__dirname, "quiz.html"),
       },
-      output: {
-        assetFileNames: "assets/[name][extname]",
-        chunkFileNames: "js/[name].js",
-        entryFileNames: "js/[name].js",
-      },
     },
   },
-  server: {
-    open: "/index.html",
+  optimizeDeps: {
+    include: ["nanoid", "zod", "idb"],
   },
 });
