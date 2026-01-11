@@ -135,13 +135,13 @@ body {
 }
 
 @media (max-width: 400px) {
-  .text-h1 {
+  .text--h1 {
     font-size: var(--text-h2);
     line-height: var(--lh-h2);
     font-weight: var(--fw-semibold);
   }
 
-  .text-h2 {
+  .text--h2 {
     font-size: var(--text-h3);
     line-height: var(--lh-h3);
     font-weight: var(--fw-semibold);
