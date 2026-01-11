@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/components/header.css" />
     <link rel="stylesheet" href="/css/components/button.css" />
     <link rel="stylesheet" href="/css/components/jsonForm.css" />
+    <link rel="stylesheet" href="/css/components/toast.css" />
     <link rel="stylesheet" href="./css/pages/index.css" />
   </head>
   <body>
@@ -56,5 +57,24 @@
         </form>
       </main>
     </div>
+
+    <template id="toast-template">
+      <div class="toast" role="alert">
+        <div class="toast__content">
+          <span>❌</span>
+          <p class="toast__message">Ошибка: не удалось обработать JSON.</p>
+          <p class="text--caption">
+            Проверьте формат данных и попробуйте снова.
+          </p>
+          <button
+            class="toast__close button button--secondary"
+            type="button"
+            aria-label="Закрыть уведомление"
+          >
+            Попробовать снова
+          </button>
+        </div>
+      </div>
+    </template>
   </body>
 </html>
