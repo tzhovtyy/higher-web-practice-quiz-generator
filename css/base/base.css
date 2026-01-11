@@ -77,44 +77,44 @@ body {
   line-height: var(--lh-body);
 }
 
-.text-h1 {
+.text--h1 {
   font-size: var(--text-h1);
   line-height: var(--lh-h1);
   font-weight: var(--fw-bold);
 }
 
-.text-h2 {
+.text--h2 {
   font-size: var(--text-h2);
   line-height: var(--lh-h2);
   font-weight: var(--fw-semibold);
 }
 
-.text-h3 {
+.text--h3 {
   font-size: var(--text-h3);
   line-height: var(--lh-h3);
   font-weight: var(--fw-semibold);
 }
 
-.text-body {
+.text--body {
   font-size: var(--text-body);
   line-height: var(--lh-body);
   font-weight: var(--fw-regular);
 }
 
-.text-body-accent {
+.text--body-accent {
   font-size: var(--text-body);
   line-height: var(--lh-body);
   font-weight: var(--fw-medium);
 }
 
-.text-caption {
+.text--caption {
   font-size: var(--text-caption);
   line-height: var(--lh-caption);
   font-weight: var(--fw-regular);
   color: var(--color-text-secondary);
 }
 
-.text-mono {
+.text--mono {
   font-family: var(--font-mono);
   font-size: var(--text-mono);
   line-height: var(--lh-body);
