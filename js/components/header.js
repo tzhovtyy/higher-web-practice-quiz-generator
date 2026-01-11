@@ -1,27 +1,27 @@
 const PAGE_ACTIONS = {
   default: {
-    text: "Посмотреть сохранённые квизы",
-    href: "/quizzes.html",
-    class: "button--secondary",
+    text: 'Посмотреть сохранённые квизы',
+    href: '/quizzes.html',
+    class: 'button--secondary',
   },
   quizzes: {
-    text: "Добавить квиз",
-    href: "/index.html",
-    class: "button--primary",
+    text: 'Добавить квиз',
+    href: '/index.html',
+    class: 'button--primary',
   },
 };
 
 function getCurrentPageKey() {
-  if (location.pathname.includes("quizzes")) return "quizzes";
-  return "default";
+  if (location.pathname.includes('quizzes')) return 'quizzes';
+  return 'default';
 }
 
 export function initHeader() {
-  const actionBtn = document.querySelector(".header__action");
-  const burgerBtn = document.querySelector(".header__burger");
-  const mobileNav = document.querySelector(".header__nav");
+  const actionBtn = document.querySelector('.header__action');
+  const burgerBtn = document.querySelector('.header__burger');
+  const mobileNav = document.querySelector('.header__nav');
   const mobileLinkTemplate = document.querySelector(
-    "#header-nav-link-template"
+    '#header-nav-link-template'
   );
 
   if (!actionBtn || !burgerBtn || !mobileNav || !mobileLinkTemplate) return;
@@ -33,23 +33,23 @@ export function initHeader() {
     actionBtn.textContent = action.text;
     actionBtn.href = action.href;
     actionBtn.classList.forEach((cls) => {
-      if (cls.startsWith("button--")) actionBtn.classList.remove(cls);
+      if (cls.startsWith('button--')) actionBtn.classList.remove(cls);
     });
     if (action.class) actionBtn.classList.add(action.class);
   }
 
   Object.values(PAGE_ACTIONS).forEach((item) => {
     const clone = mobileLinkTemplate.content.cloneNode(true);
-    const link = clone.querySelector("a");
+    const link = clone.querySelector('a');
     link.textContent = item.text;
     link.href = item.href;
     mobileNav.appendChild(clone);
   });
 
-  burgerBtn.addEventListener("click", () => {
-    const isActive = mobileNav.classList.toggle("active");
-    burgerBtn.setAttribute("aria-expanded", String(isActive));
-    burgerBtn.classList.toggle("active", isActive);
-    mobileNav.setAttribute("aria-hidden", String(!isActive));
+  burgerBtn.addEventListener('click', () => {
+    const isActive = mobileNav.classList.toggle('active');
+    burgerBtn.setAttribute('aria-expanded', String(isActive));
+    burgerBtn.classList.toggle('active', isActive);
+    mobileNav.setAttribute('aria-hidden', String(!isActive));
   });
 }

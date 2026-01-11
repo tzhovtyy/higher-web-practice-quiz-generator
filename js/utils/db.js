@@ -1,7 +1,7 @@
-import { openDB } from "idb";
+import { openDB } from 'idb';
 
-export const dbPromise = openDB("quizzes-db", 1, {
+export const dbPromise = openDB('quizzes-db', 1, {
   upgrade(db) {
-    db.createObjectStore("quizzes", { keyPath: "id" });
+    db.createObjectStore('quizzes', { keyPath: 'id' });
   },
 });

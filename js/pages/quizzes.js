@@ -1,5 +1,5 @@
-import { initHeader } from "../components/header";
+import { initHeader } from '../components/header';
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   initHeader();
 });
