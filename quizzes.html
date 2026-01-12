@@ -6,9 +6,11 @@
     <title>Ваши квизы</title>
     <link rel="stylesheet" href="/css/base/variables.css" />
     <link rel="stylesheet" href="/css/base/base.css" />
-    <link rel="stylesheet" href="/css/components/header.css" />
     <link rel="stylesheet" href="/css/components/button.css" />
+    <link rel="stylesheet" href="/css/components/header.css" />
+    <link rel="stylesheet" href="/css/components/footer.css" />
     <link rel="stylesheet" href="./css/pages/quizzes.css" />
+    <link rel="stylesheet" href="./css/components/quizCard.css" />
   </head>
   <body>
     <script type="module" src="./js/pages/quizzes.js"></script>
@@ -30,13 +32,49 @@
           <img src="/assets/cross.svg" class="header__burger-cross" alt="" />
         </button>
 
-        <!-- Mobile menu -->
         <nav class="header__nav header__nav--mobile" aria-hidden="true">
           <template id="header-nav-link-template">
             <a class="header__nav-link" href="#">Ссылка</a>
           </template>
         </nav>
       </header>
+
+      <main class="main-content">
+        <div class="quizzes-placeholder" hidden>
+          <div class="quizzes-placeholder__content">
+            <h1 class="quizzes-placeholder__title">
+              У вас нет сохранённых квизов(
+            </h1>
+            <p class="quizzes-placeholder__subtitle">Но вы можете добавить!</p>
+            <a
+              href="/index.html"
+              class="quizzes-placeholder__action button button--primary"
+            >
+              Добавить квиз
+            </a>
+          </div>
+        </div>
+
+        <div class="quizzes" hidden>
+          <h1 class="quizzes__title text--h1">Ваши квизы</h1>
+          <div class="quizzes__container"></div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">Учебный проект 2025</p>
+      </footer>
     </div>
+
+    <template id="quiz-card-template">
+      <div class="quiz-card">
+        <h2 class="quiz-card__title text--h3"></h2>
+        <p class="quiz-card__description"></p>
+        <div class="quiz-card__bottom">
+          <span class="quiz-card__question-count text--caption"></span>
+          <button class="button button--ghost quiz-card__button">Пройти</button>
+        </div>
+      </div>
+    </template>
   </body>
 </html>

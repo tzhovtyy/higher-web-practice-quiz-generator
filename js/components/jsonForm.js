@@ -1,3 +1,4 @@
+import { saveQuiz } from '../utils/storage';
 import { validateQuizJson } from '../utils/validation';
 import { showToast } from './toast';
 
@@ -7,7 +8,7 @@ export function initJsonForm() {
 
   if (!form || !textarea) return;
 
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     textarea.classList.remove('json-form__textarea--error');
@@ -22,9 +23,7 @@ export function initJsonForm() {
       return;
     }
     const quizData = validationResult.data;
-
-    // TBD сохранение в IndexedDB
-    console.log('Валидный тест:', quizData);
+    await saveQuiz(quizData);
     window.location.href = '/quizzes.html';
   });
 }

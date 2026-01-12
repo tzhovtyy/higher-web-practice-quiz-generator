@@ -1,0 +1,29 @@
+.quiz-card {
+  box-shadow: var(--shadow-e1);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.quiz-card__title {
+}
+
+.quiz-card__description {
+  margin-top: 8px;
+  color: var(--color-text-secondary);
+}
+
+.quiz-card__bottom {
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+}
+
+.quiz-card__question-count {
+  color: var(--color-text-secondary);
+}

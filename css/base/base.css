@@ -122,19 +122,28 @@ body {
 
 /* Layout */
 .page-wrapper {
+  overflow: hidden;
   width: 100%;
   max-width: var(--max-width-desktop);
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 16px 64px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media (max-width: 768px) {
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
   .page-wrapper {
     max-width: var(--max-width-tablet);
+    padding-bottom: 48px;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 767px) {
   .text--h1 {
     font-size: var(--text-h2);
     line-height: var(--lh-h2);
@@ -145,5 +154,9 @@ body {
     font-size: var(--text-h3);
     line-height: var(--lh-h3);
     font-weight: var(--fw-semibold);
+  }
+
+  .page-wrapper {
+    padding-bottom: 24px;
   }
 }

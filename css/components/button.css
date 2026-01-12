@@ -1,4 +1,5 @@
 .button {
+  display: inline-block;
   font-size: var(--text-body);
   line-height: var(--lh-body);
   font-weight: var(--fw-medium);
@@ -30,6 +31,9 @@
 
 .button--ghost {
   color: var(--color-primary);
+  height: fit-content;
+  padding: 0;
+  border: none;
 }
 
 .button--ghost:hover {
