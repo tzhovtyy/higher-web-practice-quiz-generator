@@ -1,0 +1,19 @@
+.quiz {
+  min-height: 740px;
+  padding: 64px 0;
+  width: 100%;
+  max-width: var(--max-content-width-desktop);
+}
+
+.quiz__description {
+  margin-top: 4px;
+  color: var(--color-text-secondary);
+}
+
+.quiz__question {
+  margin-top: 24px;
+}
+
+.quiz__button {
+  margin-top: 24px;
+}

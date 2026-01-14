@@ -1,0 +1,24 @@
+/* css/components/question.css */
+
+.question {
+  width: 100%;
+}
+
+.question__options {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+.question__submit {
+  margin-top: 24px;
+}
+
+@media (max-width: 420px) {
+  .question__options {
+    padding: 10px;
+    gap: 8px;
+  }
+}

@@ -4,10 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Прохождение теста</title>
-    <link rel="stylesheet" href="./css/pages/quiz.css" />
+
+    <link rel="stylesheet" href="/css/base/variables.css" />
+    <link rel="stylesheet" href="/css/base/base.css" />
+    <link rel="stylesheet" href="/css/components/button.css" />
+    <link rel="stylesheet" href="/css/components/header.css" />
+    <link rel="stylesheet" href="/css/components/footer.css" />
+    <link rel="stylesheet" href="/css/components/option.css" />
+    <link rel="stylesheet" href="/css/components/question.css" />
+    <link rel="stylesheet" href="/css/pages/quiz.css" />
   </head>
   <body>
-    <script type="module" src="./js/pages/quiz.js"></script>
+    <script type="module" src="/js/pages/quiz.js"></script>
 
     <div class="page-wrapper">
       <header class="header" role="banner">
@@ -27,13 +35,61 @@
           <img src="/assets/cross.svg" class="header__burger-cross" alt="" />
         </button>
 
-        <!-- Mobile menu -->
         <nav class="header__nav header__nav--mobile" aria-hidden="true">
           <template id="header-nav-link-template">
             <a class="header__nav-link" href="#">Ссылка</a>
           </template>
         </nav>
       </header>
+
+      <main class="quiz">
+        <h1 class="quiz__title text--h1"></h1>
+        <div class="quiz__description"></div>
+
+        <button class="button button--primary quiz__button">Ответить</button>
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">Учебный проект 2025</p>
+      </footer>
     </div>
+
+    <template id="single-question-template">
+      <div class="question quiz__question" data-type="single">
+        <h3 class="question__text"></h3>
+        <p class="question__hint">Выберите один вариант ответа</p>
+        <div class="question__options"></div>
+      </div>
+    </template>
+
+    <template id="multiple-question-template">
+      <div class="question quiz__question" data-type="multiple">
+        <h3 class="question__text"></h3>
+        <p class="question__hint">
+          Выберите один или несколько вариантов ответа
+        </p>
+        <div class="question__options"></div>
+      </div>
+    </template>
+
+    <template id="option-template">
+      <div class="option">
+        <label class="option__label">
+          <input type="radio" name="question" value="" />
+          <span class="option__text"></span>
+        </label>
+        <p class="option__explanation"></p>
+      </div>
+    </template>
+
+    <template id="checkbox-option-template">
+      <div class="option">
+        <label class="option__label">
+          <input type="checkbox" name="question" value="" />
+          <span class="option__text"></span>
+        </label>
+        <p class="option__explanation"></p>
+      </div>
+    </template>
   </body>
 </html>

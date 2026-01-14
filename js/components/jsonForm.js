@@ -1,5 +1,5 @@
 import { saveQuiz } from '../utils/storage';
-import { validateQuizJson } from '../utils/validation';
+import { validateQuizJson } from '../utils/jsonValidation';
 import { showToast } from './toast';
 
 export function initJsonForm() {

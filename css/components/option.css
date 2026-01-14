@@ -1,0 +1,66 @@
+.option {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+}
+
+.option__explanation {
+  padding: 0 16px;
+  display: none;
+}
+.option__label {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 8px;
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  border: 1px solid var(--color-border);
+  position: relative;
+}
+
+.option__label:hover {
+  background-color: rgb(from var(--color-primary) r g b / 5%);
+}
+
+.option--correct input {
+  border-color: var(--color-success);
+}
+
+.option--incorrect input {
+  border-color: var(--color-error);
+}
+
+.option--correct input[type='checkbox']::before {
+  background-color: var(--color-success);
+}
+
+.option--incorrect input[type='checkbox']:checked:before {
+  background-color: var(--color-error);
+  background-image: url('/assets/white-cross.svg');
+}
+
+.option--correct input[type='radio']:checked::before {
+  background: transparent;
+  background-image: url('/assets/green-check.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.option--incorrect input[type='radio']:checked:before {
+  background: transparent;
+  background-image: url('/assets/red-cross.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.option--incorrect:has(input:checked) .option__explanation {
+  display: inline-block;
+}
+
+.option--correct:has(input:checked) .option__explanation {
+  display: inline-block;
+}

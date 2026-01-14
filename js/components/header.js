@@ -47,9 +47,9 @@ export function initHeader() {
   });
 
   burgerBtn.addEventListener('click', () => {
-    const isActive = mobileNav.classList.toggle('active');
+    const isActive = mobileNav.classList.toggle('header__nav--active');
     burgerBtn.setAttribute('aria-expanded', String(isActive));
-    burgerBtn.classList.toggle('active', isActive);
+    burgerBtn.classList.toggle('header__burger--active', isActive);
     mobileNav.setAttribute('aria-hidden', String(!isActive));
   });
 }
