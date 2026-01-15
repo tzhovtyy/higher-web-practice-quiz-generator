@@ -40,3 +40,8 @@
 .button--ghost:hover {
   opacity: 0.8;
 }
+
+.button:disabled {
+  background: var(--color-border);
+  border-color: var(--color-border);
+}

@@ -1,30 +1,7 @@
-// js/components/modal.js
-
-const RESULT_COMMENTS = [
-  {
-    minRatio: 1,
-    text: 'Отличный результат! Вы прекрасно усвоили материал 👏',
-  },
-  {
-    minRatio: 0.7,
-    text: 'Хорошая работа! Есть небольшие неточности, но в целом всё отлично.',
-  },
-  {
-    minRatio: 0.4,
-    text: 'Неплохо, но стоит повторить материал и попробовать ещё раз.',
-  },
-  {
-    minRatio: 0,
-    text: 'Не переживайте — ошибки это часть обучения. Попробуйте пройти тест снова, чтобы закрепить материал и улучшить результат.',
-  },
-];
+import { RESULT_COMMENTS } from '../consts/resultComments';
 
 export function initResultModal({ score, totalQuestions, onRetry }) {
   const template = document.getElementById('modal-template');
-
-  if (!template) {
-    throw new Error('Modal template not found');
-  }
 
   const modalElement = template.content.cloneNode(true);
   const modalRoot = modalElement.querySelector('.modal');

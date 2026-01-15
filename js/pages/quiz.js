@@ -60,14 +60,14 @@ async function initQuizPage() {
   quizState.currentQuestionIndex = questionIndex;
 
   if (!quizId) {
-    alert('Не передан идентификатор квиза');
+    window.location.href = '/quizzes.html';
     return;
   }
 
   const quiz = await getQuiz(quizId);
 
   if (!quiz) {
-    alert('Квиз не найден');
+    window.location.href = '/quizzes.html';
     return;
   }
 
@@ -84,11 +84,6 @@ async function initQuizPage() {
 
   const question = quiz.questions[questionIndex];
 
-  if (!question) {
-    alert('Вопрос не найден');
-    return;
-  }
-
   renderQuestion(question);
 
   const answerButton = document.querySelector('.quiz__button');
@@ -98,6 +93,8 @@ async function initQuizPage() {
 
     handleAnswerButtonClick(currentQuestion, quiz, answerButton);
   });
+
+  setupAnswerSelectionListener();
 }
 
 function handleAnswerButtonClick(question, quiz, buttonElement) {
@@ -111,13 +108,6 @@ function handleAnswerButtonClick(question, quiz, buttonElement) {
       handleNextQuestion(quiz);
     }
 
-    return;
-  }
-  const hasSelectedOptions =
-    document.querySelectorAll('.quiz__question input:checked').length > 0;
-
-  if (!hasSelectedOptions) {
-    alert('Выберите хотя бы один вариант ответа');
     return;
   }
 
@@ -164,6 +154,8 @@ function handleNextQuestion(quiz) {
 
   renderQuestion(nextQuestion);
 
+  setupAnswerSelectionListener();
+
   const answerButton = document.querySelector('.quiz__button');
   answerButton.textContent = 'Ответить';
 }
@@ -184,5 +176,31 @@ function showResultsModal(quiz) {
       const answerButton = document.querySelector('.quiz__button');
       answerButton.textContent = 'Ответить';
     },
+  });
+}
+
+function updateAnswerButtonState() {
+  const buttonElement = document.querySelector('.quiz__button');
+
+  if (!buttonElement) return;
+
+  const hasSelectedOptions =
+    document.querySelectorAll('.quiz__question input:checked').length > 0;
+
+  buttonElement.disabled = !hasSelectedOptions;
+}
+
+function setupAnswerSelectionListener() {
+  const inputs = document.querySelectorAll('.quiz__question input');
+  const buttonElement = document.querySelector('.quiz__button');
+
+  buttonElement.disabled = true;
+
+  inputs.forEach((input) => {
+    input.addEventListener('change', () => {
+      if (!quizState.isAnswered) {
+        updateAnswerButtonState();
+      }
+    });
   });
 }
