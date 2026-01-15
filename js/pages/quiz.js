@@ -48,7 +48,6 @@ function fillQuizHeader(quiz) {
 
 function disableQuestionInputs() {
   const inputs = document.querySelectorAll('.quiz__question input');
-
   inputs.forEach((input) => {
     input.disabled = true;
   });
@@ -56,48 +55,40 @@ function disableQuestionInputs() {
 
 async function initQuizPage() {
   const { quizId, questionIndex } = getQueryParams();
-
   quizState.currentQuestionIndex = questionIndex;
-
   if (!quizId) {
     window.location.href = '/quizzes.html';
     return;
   }
-
   const quiz = await getQuiz(quizId);
-
   if (!quiz) {
     window.location.href = '/quizzes.html';
     return;
   }
 
-  const progressBarElement = document.querySelector('.progress-bar');
-
-  quizState.ui.progressBar = initProgressBar(
-    progressBarElement,
-    quiz.questions.length
-  );
-
+  quizState.ui.progressBar = initProgressBar(quiz.questions.length);
   quizState.ui.progressBar.update(quizState.currentQuestionIndex);
 
   fillQuizHeader(quiz);
-
   const question = quiz.questions[questionIndex];
-
   renderQuestion(question);
 
-  const answerButton = document.querySelector('.quiz__button');
+  const quizForm = document.querySelector('.quiz');
 
-  answerButton.addEventListener('click', () => {
+  quizForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
     const currentQuestion = quiz.questions[quizState.currentQuestionIndex];
 
-    handleAnswerButtonClick(currentQuestion, quiz, answerButton);
+    handleQuizSubmit(currentQuestion, quiz);
   });
 
   setupAnswerSelectionListener();
 }
 
-function handleAnswerButtonClick(question, quiz, buttonElement) {
+function handleQuizSubmit(question, quiz) {
+  const buttonElement = document.querySelector('.quiz__button');
+
   if (quizState.isAnswered) {
     const isLastQuestion =
       quizState.currentQuestionIndex === quiz.questions.length - 1;
@@ -107,19 +98,15 @@ function handleAnswerButtonClick(question, quiz, buttonElement) {
     } else {
       handleNextQuestion(quiz);
     }
-
     return;
   }
 
   const { isCorrect, isPartiallyCorrect } = validateAnswer(question);
-
   if (isCorrect) {
     quizState.score += 1;
   }
-
   if (question.type === 'multiple' && isPartiallyCorrect) {
     const noticeElement = document.querySelector('.question__notice');
-
     if (noticeElement) {
       noticeElement.textContent =
         'Часть ответов верна, но вы пропустили правильные варианты.';
@@ -134,7 +121,7 @@ function handleAnswerButtonClick(question, quiz, buttonElement) {
     quizState.currentQuestionIndex === quiz.questions.length - 1;
 
   buttonElement.textContent = isLastQuestion
-    ? 'Завершить квиз'
+    ? 'Завершить тест'
     : 'Следующий вопрос';
 }
 

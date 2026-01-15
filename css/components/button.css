@@ -16,7 +16,8 @@
   border-color: var(--color-primary);
 }
 
-.button--primary:hover {
+.button--primary:hover,
+.button--primary:focus {
   opacity: 0.8;
 }
 
@@ -26,7 +27,8 @@
   color: var(--color-primary);
 }
 
-.button--secondary:hover {
+.button--secondary:hover,
+.button--secondary:focus {
   background-color: rgb(from var(--color-primary) r g b / 10%);
 }
 

@@ -1,4 +1,5 @@
-export function initProgressBar(containerElement, totalQuestions) {
+export function initProgressBar(totalQuestions) {
+  const containerElement = document.querySelector('.progress-bar');
   const currentElement = containerElement.querySelector(
     '.progress-bar__current'
   );

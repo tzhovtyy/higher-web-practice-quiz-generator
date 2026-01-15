@@ -19,7 +19,7 @@
   <body>
     <script type="module" src="/js/pages/quiz.js"></script>
 
-    <div class="page-wrapper">
+    <div class="page">
       <header class="header" role="banner">
         <a href="/" class="header__logo-link" aria-label="На главную">
           <img src="/assets/logo.svg" class="header__logo" alt="Quiz App" />
@@ -44,33 +44,35 @@
         </nav>
       </header>
 
-      <main class="quiz">
-        <h1 class="quiz__title text--h1"></h1>
-        <div class="quiz__description"></div>
+      <main class="quiz-wrapper">
+        <form class="quiz">
+          <h1 class="quiz__title text--h1"></h1>
+          <div class="quiz__description"></div>
 
-        <div
-          class="progress-bar quiz__progress-bar"
-          aria-label="Прогресс прохождения теста"
-        >
-          <p class="progress-bar__text">
-            Вопрос
-            <span class="progress-bar__current"></span>
-            из
-            <span class="progress-bar__total"></span>
-          </p>
+          <div
+            class="progress-bar quiz__progress-bar"
+            aria-label="Прогресс прохождения теста"
+          >
+            <p class="progress-bar__text">
+              Вопрос
+              <span class="progress-bar__current"></span>
+              из
+              <span class="progress-bar__total"></span>
+            </p>
 
-          <div class="progress-bar__track">
-            <div
-              class="progress-bar__fill"
-              role="progressbar"
-              aria-valuemin="1"
-              aria-valuemax="1"
-              aria-valuenow="1"
-            ></div>
+            <div class="progress-bar__track">
+              <div
+                class="progress-bar__fill"
+                role="progressbar"
+                aria-valuemin="1"
+                aria-valuemax="1"
+                aria-valuenow="1"
+              ></div>
+            </div>
           </div>
-        </div>
 
-        <button class="button button--primary quiz__button">Ответить</button>
+          <button class="button button--primary quiz__button">Ответить</button>
+        </form>
       </main>
 
       <footer class="footer">
@@ -124,9 +126,9 @@
           <p class="modal__message"></p>
           <p class="modal__comment text--caption"></p>
           <div class="modal__actions">
-            <a href="/quizzes.html" class="button button--primary">
+            <button class="button button--primary modal__to-quizzes">
               К списку квизов
-            </a>
+            </button>
             <button class="modal__retry button button--secondary">
               Пройти снова
             </button>

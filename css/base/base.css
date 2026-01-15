@@ -185,7 +185,7 @@ body {
 }
 
 /* Layout */
-.page-wrapper {
+.page {
   overflow: hidden;
   width: 100%;
   max-width: var(--max-width-desktop);
@@ -201,7 +201,7 @@ body {
 }
 
 @media (max-width: 1024px) {
-  .page-wrapper {
+  .page {
     max-width: var(--max-width-tablet);
     padding-bottom: 48px;
   }
@@ -220,7 +220,7 @@ body {
     font-weight: var(--fw-semibold);
   }
 
-  .page-wrapper {
+  .page {
     padding-bottom: 24px;
   }
 }

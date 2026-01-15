@@ -14,7 +14,7 @@
   </head>
   <body>
     <script type="module" src="./js/pages/quizzes.js"></script>
-    <div class="page-wrapper">
+    <div class="page">
       <header class="header" role="banner">
         <a href="/" class="header__logo-link" aria-label="На главную">
           <img src="/assets/logo.svg" class="header__logo" alt="Quiz App" />
@@ -40,7 +40,7 @@
       </header>
 
       <main class="main-content">
-        <div class="quizzes-placeholder" hidden>
+        <section class="quizzes-placeholder" hidden>
           <div class="quizzes-placeholder__content">
             <h1 class="quizzes-placeholder__title">
               У вас нет сохранённых квизов(
@@ -53,12 +53,12 @@
               Добавить квиз
             </a>
           </div>
-        </div>
+        </section>
 
-        <div class="quizzes" hidden>
+        <section class="quizzes" hidden>
           <h1 class="quizzes__title text--h1">Ваши квизы</h1>
           <div class="quizzes__container"></div>
-        </div>
+        </section>
       </main>
 
       <footer class="footer">

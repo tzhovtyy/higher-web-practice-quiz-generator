@@ -1,16 +1,16 @@
-.main-content {
+.quiz-generator {
   max-width: var(--max-content-width-desktop);
   min-height: 740px;
   padding-top: 170px;
   width: 100%;
 }
 
-.main-content__subtitle {
+.quiz-generator__subtitle {
   color: var(--color-text-secondary);
 }
 
 @media (max-width: 1024px) {
-  .main-content {
+  .quiz-generator {
     max-width: var(--max-width-tablet);
   }
 }

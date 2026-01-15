@@ -64,3 +64,9 @@
 .option--correct:has(input:checked) .option__explanation {
   display: inline-block;
 }
+
+.option__label:has(input:focus) {
+  outline: 1px solid var(--color-primary);
+  outline-offset: 1px;
+  border-radius: var(--radius-sm);
+}

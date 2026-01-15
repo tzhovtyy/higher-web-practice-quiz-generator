@@ -1,15 +1,4 @@
-const PAGE_ACTIONS = {
-  default: {
-    text: 'Посмотреть сохранённые квизы',
-    href: '/quizzes.html',
-    class: 'button--secondary',
-  },
-  quizzes: {
-    text: 'Добавить квиз',
-    href: '/index.html',
-    class: 'button--primary',
-  },
-};
+import { HEADER_ACTIONS } from '../consts/headerActions';
 
 function getCurrentPageKey() {
   if (location.pathname.includes('quizzes')) return 'quizzes';
@@ -27,7 +16,7 @@ export function initHeader() {
   if (!actionBtn || !burgerBtn || !mobileNav || !mobileLinkTemplate) return;
 
   const pageKey = getCurrentPageKey();
-  const action = PAGE_ACTIONS[pageKey];
+  const action = HEADER_ACTIONS[pageKey];
 
   if (action) {
     actionBtn.textContent = action.text;
@@ -38,7 +27,7 @@ export function initHeader() {
     if (action.class) actionBtn.classList.add(action.class);
   }
 
-  Object.values(PAGE_ACTIONS).forEach((item) => {
+  Object.values(HEADER_ACTIONS).forEach((item) => {
     const clone = mobileLinkTemplate.content.cloneNode(true);
     const link = clone.querySelector('a');
     link.textContent = item.text;

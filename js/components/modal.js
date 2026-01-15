@@ -7,7 +7,6 @@ export function initResultModal({ score, totalQuestions, onRetry }) {
   const modalRoot = modalElement.querySelector('.modal');
   const messageElement = modalRoot.querySelector('.modal__message');
   const commentElement = modalRoot.querySelector('.modal__comment');
-  const retryButton = modalRoot.querySelector('.modal__retry');
 
   const ratio = score / totalQuestions;
 
@@ -20,12 +19,10 @@ export function initResultModal({ score, totalQuestions, onRetry }) {
 
   commentElement.textContent = comment.text;
 
-  retryButton.addEventListener('click', () => {
-    closeModal(modalRoot);
-    onRetry();
-  });
+  bindModalActions(modalRoot, onRetry);
 
   document.body.appendChild(modalRoot);
+
   lockScroll();
 
   return modalRoot;
@@ -42,4 +39,18 @@ function unlockScroll() {
 function closeModal(modalElement) {
   unlockScroll();
   modalElement.remove();
+}
+
+function bindModalActions(modalRoot, onRetry) {
+  const retryButton = modalRoot.querySelector('.modal__retry');
+  const toQuizzesButton = modalRoot.querySelector('.modal__to-quizzes');
+
+  toQuizzesButton.addEventListener('click', () => {
+    window.location.href = '/quizzes.html';
+  });
+
+  retryButton.addEventListener('click', () => {
+    closeModal(modalRoot);
+    onRetry();
+  });
 }
