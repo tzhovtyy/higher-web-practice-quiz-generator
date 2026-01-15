@@ -1,0 +1,17 @@
+.progress-bar__text {
+  color: var(--color-text-secondary);
+}
+
+.progress-bar__track {
+  width: 100%;
+  height: 6px;
+  background: var(--color-border);
+  margin-top: 4px;
+}
+
+.progress-bar__fill {
+  height: 6px;
+  background: var(--color-primary);
+  width: 0px;
+  transition: width 0.2s ease-in-out;
+}

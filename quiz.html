@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/css/components/footer.css" />
     <link rel="stylesheet" href="/css/components/option.css" />
     <link rel="stylesheet" href="/css/components/question.css" />
+    <link rel="stylesheet" href="/css/components/progressBar.css" />
+    <link rel="stylesheet" href="/css/components/modal.css" />
     <link rel="stylesheet" href="/css/pages/quiz.css" />
   </head>
   <body>
@@ -46,6 +48,28 @@
         <h1 class="quiz__title text--h1"></h1>
         <div class="quiz__description"></div>
 
+        <div
+          class="progress-bar quiz__progress-bar"
+          aria-label="Прогресс прохождения теста"
+        >
+          <p class="progress-bar__text">
+            Вопрос
+            <span class="progress-bar__current"></span>
+            из
+            <span class="progress-bar__total"></span>
+          </p>
+
+          <div class="progress-bar__track">
+            <div
+              class="progress-bar__fill"
+              role="progressbar"
+              aria-valuemin="1"
+              aria-valuemax="1"
+              aria-valuenow="1"
+            ></div>
+          </div>
+        </div>
+
         <button class="button button--primary quiz__button">Ответить</button>
       </main>
 
@@ -69,6 +93,7 @@
           Выберите один или несколько вариантов ответа
         </p>
         <div class="question__options"></div>
+        <p class="question__notice"></p>
       </div>
     </template>
 
@@ -89,6 +114,24 @@
           <span class="option__text"></span>
         </label>
         <p class="option__explanation"></p>
+      </div>
+    </template>
+
+    <template id="modal-template">
+      <div class="modal">
+        <div class="modal__content">
+          <h3 class="modal__title text--h1">Тест завершён!</h3>
+          <p class="modal__message"></p>
+          <p class="modal__comment text--caption"></p>
+          <div class="modal__actions">
+            <a href="/quizzes.html" class="button button--primary">
+              К списку квизов
+            </a>
+            <button class="modal__retry button button--secondary">
+              Пройти снова
+            </button>
+          </div>
+        </div>
       </div>
     </template>
   </body>

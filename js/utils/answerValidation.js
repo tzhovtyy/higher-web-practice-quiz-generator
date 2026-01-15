@@ -1,33 +1,42 @@
 export function validateAnswer(question) {
-  const optionElements = Array.from(
-    document.querySelectorAll('.quiz__question .option')
+  const selectedInputs = Array.from(
+    document.querySelectorAll('.quiz__question input:checked')
   );
 
-  let isAnswerCorrect = true;
+  const selectedOptionIds = selectedInputs.map((input) => Number(input.value));
 
-  optionElements.forEach((optionElement) => {
-    const inputElement = optionElement.querySelector('input');
-    const optionId = Number(inputElement.value);
+  const correctOptions = question.options.filter((option) => option.correct);
 
-    const optionData = question.options.find(
-      (option) => option.id === optionId
-    );
+  const correctOptionIds = correctOptions.map((option) => option.id);
 
-    if (!optionData) return;
+  const hasIncorrectSelection = selectedOptionIds.some(
+    (id) => !correctOptionIds.includes(id)
+  );
 
-    if (optionData.correct) {
+  const hasAllCorrectSelections =
+    correctOptionIds.every((id) => selectedOptionIds.includes(id)) &&
+    selectedOptionIds.length === correctOptionIds.length;
+
+  const isPartiallyCorrect =
+    !hasIncorrectSelection &&
+    selectedOptionIds.length < correctOptionIds.length;
+
+  question.options.forEach((option) => {
+    const optionElement = document
+      .querySelector(`.quiz__question input[value="${option.id}"]`)
+      ?.closest('.option');
+
+    if (!optionElement) return;
+
+    if (option.correct) {
       optionElement.classList.add('option--correct');
-
-      if (!inputElement.checked) {
-        isAnswerCorrect = false;
-      }
-    }
-
-    if (inputElement.checked && !optionData.correct) {
+    } else if (selectedOptionIds.includes(option.id)) {
       optionElement.classList.add('option--incorrect');
-      isAnswerCorrect = false;
     }
   });
 
-  return isAnswerCorrect;
+  return {
+    isCorrect: hasAllCorrectSelections,
+    isPartiallyCorrect,
+  };
 }

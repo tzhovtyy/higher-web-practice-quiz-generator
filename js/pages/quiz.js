@@ -2,11 +2,16 @@ import { getQuiz } from '../utils/storage.js';
 import { initHeader } from '../components/header.js';
 import { renderQuestion } from '../components/question.js';
 import { validateAnswer } from '../utils/answerValidation.js';
+import { initProgressBar } from '../components/progressBar.js';
+import { initResultModal } from '../components/modal.js';
 
 const quizState = {
   score: 0,
   isAnswered: false,
   currentQuestionIndex: 0,
+  ui: {
+    progressBar: null,
+  },
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -66,6 +71,15 @@ async function initQuizPage() {
     return;
   }
 
+  const progressBarElement = document.querySelector('.progress-bar');
+
+  quizState.ui.progressBar = initProgressBar(
+    progressBarElement,
+    quiz.questions.length
+  );
+
+  quizState.ui.progressBar.update(quizState.currentQuestionIndex);
+
   fillQuizHeader(quiz);
 
   const question = quiz.questions[questionIndex];
@@ -88,10 +102,17 @@ async function initQuizPage() {
 
 function handleAnswerButtonClick(question, quiz, buttonElement) {
   if (quizState.isAnswered) {
-    handleNextQuestion(quiz);
+    const isLastQuestion =
+      quizState.currentQuestionIndex === quiz.questions.length - 1;
+
+    if (isLastQuestion) {
+      showResultsModal(quiz);
+    } else {
+      handleNextQuestion(quiz);
+    }
+
     return;
   }
-
   const hasSelectedOptions =
     document.querySelectorAll('.quiz__question input:checked').length > 0;
 
@@ -100,17 +121,31 @@ function handleAnswerButtonClick(question, quiz, buttonElement) {
     return;
   }
 
-  const isCorrect = validateAnswer(question);
+  const { isCorrect, isPartiallyCorrect } = validateAnswer(question);
 
   if (isCorrect) {
     quizState.score += 1;
+  }
+
+  if (question.type === 'multiple' && isPartiallyCorrect) {
+    const noticeElement = document.querySelector('.question__notice');
+
+    if (noticeElement) {
+      noticeElement.textContent =
+        'Часть ответов верна, но вы пропустили правильные варианты.';
+    }
   }
 
   quizState.isAnswered = true;
 
   disableQuestionInputs();
 
-  buttonElement.textContent = 'Следующий вопрос';
+  const isLastQuestion =
+    quizState.currentQuestionIndex === quiz.questions.length - 1;
+
+  buttonElement.textContent = isLastQuestion
+    ? 'Завершить квиз'
+    : 'Следующий вопрос';
 }
 
 function handleNextQuestion(quiz) {
@@ -125,9 +160,29 @@ function handleNextQuestion(quiz) {
     console.log('Тест завершён');
     return;
   }
+  quizState.ui.progressBar.update(quizState.currentQuestionIndex);
 
   renderQuestion(nextQuestion);
 
   const answerButton = document.querySelector('.quiz__button');
   answerButton.textContent = 'Ответить';
+}
+
+function showResultsModal(quiz) {
+  initResultModal({
+    score: quizState.score,
+    totalQuestions: quiz.questions.length,
+    onRetry: () => {
+      quizState.score = 0;
+      quizState.currentQuestionIndex = 0;
+      quizState.isAnswered = false;
+
+      updateQuestionQueryParam(0);
+      renderQuestion(quiz.questions[0]);
+      quizState.ui.progressBar.update(0);
+
+      const answerButton = document.querySelector('.quiz__button');
+      answerButton.textContent = 'Ответить';
+    },
+  });
 }
