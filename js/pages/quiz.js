@@ -80,13 +80,13 @@ async function initQuizPage() {
 
     const currentQuestion = quiz.questions[quizState.currentQuestionIndex];
 
-    handleQuizSubmit(currentQuestion, quiz);
+    handleQuestionSubmit(currentQuestion, quiz);
   });
 
   setupAnswerSelectionListener();
 }
 
-function handleQuizSubmit(question, quiz) {
+function handleQuestionSubmit(question, quiz) {
   const buttonElement = document.querySelector('.quiz__button');
 
   if (quizState.isAnswered) {
