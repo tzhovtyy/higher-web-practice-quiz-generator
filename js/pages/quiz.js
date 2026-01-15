@@ -29,7 +29,7 @@ function getQueryParams() {
 
 function updateQuestionQueryParam(questionIndex) {
   const url = new URL(window.location.href);
-  url.searchParams.set('question', String(questionIndex));
+  url.searchParams.set('question', String(questionIndex + 1));
   window.history.pushState({}, '', url.toString());
 }
 
